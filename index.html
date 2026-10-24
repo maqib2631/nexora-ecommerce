@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXORA is a student e-commerce project demonstrating product browsing, search, filtering and a shopping cart." />
+  <title>NEXORA — Everything, One Destination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="announcement">Free shipping on orders over ₹1,499 <span>•</span> Easy 7-day returns</div>
+  <header class="site-header">
+    <a class="logo" href="#" aria-label="NEXORA home"><span class="logo-mark">u</span> NEXORA</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#products">Shop</a><a href="#categories">Categories</a><a href="#about">Our story</a>
+    </nav>
+    <div class="header-actions">
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"></label>
+      <button class="cart-button" id="openCart" aria-label="Open shopping cart">Bag <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR WORLD OF SHOPPING</p>
+        <h1>Good things.<br><em>Better living.</em></h1>
+        <p class="hero-description">Thoughtful picks for your space, your routine, and everything in between.</p>
+        <a class="primary-button" href="#products">Explore the collection <span>↗</span></a>
+        <div class="hero-note"><span class="note-dot"></span> Everything you need, all in one place</div>
+      </div>
+      <div class="hero-art" role="img" aria-label="A curated collection of lifestyle essentials">
+        <div class="hero-image"></div>
+        <div class="floating-note"><span>THE NEW</span><strong>Daily<br>essentials</strong><small>Small things, big difference.</small></div>
+        <div class="hero-number">01 <span>— 04</span></div>
+      </div>
+    </section>
+
+    <section class="trust-row" aria-label="Store benefits">
+      <div><span class="trust-icon">✳</span><span><strong>Curated quality</strong><small>Chosen with care</small></span></div>
+      <div><span class="trust-icon">↗</span><span><strong>Easy checkout</strong><small>A smoother way to shop</small></span></div>
+      <div><span class="trust-icon">♡</span><span><strong>Made for everyday</strong><small>Useful, not complicated</small></span></div>
+    </section>
+
+    <section class="category-section" id="categories">
+      <div class="section-heading"><div><p class="eyebrow">FIND YOUR FAVOURITE</p><h2>Shop by category</h2></div><p class="section-side-note">From everyday essentials to little upgrades.</p></div>
+      <div class="category-grid">
+        <button class="category-card cat-home" data-category="Home"><span>01 / HOME</span><strong>Make room<br>for comfort</strong><b>Shop home ↗</b></button>
+        <button class="category-card cat-tech" data-category="Tech"><span>02 / TECH</span><strong>Smart picks<br>for your setup</strong><b>Shop tech ↗</b></button>
+        <button class="category-card cat-style" data-category="Style"><span>03 / STYLE</span><strong>Everyday<br>personal style</strong><b>Shop style ↗</b></button>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-heading products-heading"><div><p class="eyebrow">SHOP EVERYTHING</p><h2>Find your next favourite</h2></div><div class="product-controls"><div class="filter-tabs" id="filterTabs"><button class="active" data-category="All">All items</button><button data-category="Tech">Tech</button><button data-category="Style">Fashion</button><button data-category="Home">Home</button><button data-category="Beauty">Beauty</button><button data-category="Accessories">Accessories</button><button data-category="Grocery">Grocery</button></div><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div></div>
+      <p class="result-line" id="resultLine">A few customer favourites to get you started.</p>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>No products found. Try another search.</div>
+    </section>
+
+    <section class="newsletter" id="about">
+      <div><p class="eyebrow">A NOTE FROM US</p><h2>Less scrolling.<br><em>More good finds.</em></h2><p>We believe shopping should feel easy. Thanks for stopping by.</p></div>
+      <form id="newsletterForm" class="newsletter-form"><label for="emailInput">Get occasional updates</label><div><input id="emailInput" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe">→</button></div><small id="newsletterMessage">No spam. Just the good stuff.</small></form>
+    </section>
+  </main>
+
+  <footer><a class="logo footer-logo" href="#"><span class="logo-mark">u</span> NEXORA</a><p>NEXORA is a student-built all-in-one e-commerce marketplace demo. Products and checkout are for demonstration only.</p><span>© <span id="year"></span> NEXORA</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button id="closeCart" class="icon-button" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span>♡</span><h3>Your bag is taking a break.</h3><p>Add something you like and it’ll show up here.</p><button class="text-button" id="continueShopping">Continue shopping ↗</button></div>
+    <div class="cart-footer" id="cartFooter"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><p>Shipping and taxes calculated at checkout.</p><button class="primary-button checkout-button" id="checkoutButton">Continue to checkout <span>→</span></button><small>Demo checkout — no payment will be collected.</small></div>
+  </aside>
+
+  <dialog id="checkoutDialog" class="checkout-dialog">
+    <form id="checkoutForm">
+      <div class="dialog-top"><div><p class="eyebrow">ALMOST THERE</p><h2>Checkout</h2></div><button type="button" class="icon-button" id="closeCheckout" aria-label="Close checkout">×</button></div>
+      <p class="dialog-intro">Enter your details to place a demo order.</p>
+      <label>Full name<input name="fullName" required placeholder="Your name"></label>
+      <label>Email address<input name="email" type="email" required placeholder="you@example.com"></label>
+      <label>Delivery address<textarea name="address" required rows="2" placeholder="House no., street, city"></textarea></label>
+      <div class="checkout-total"><span>Order total</span><strong id="checkoutTotal">₹0</strong></div>
+      <button class="primary-button checkout-button" type="submit">Place demo order <span>→</span></button>
+      <small>This is a college project demo. Do not enter real payment details.</small>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
